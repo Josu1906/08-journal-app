@@ -1,0 +1,15 @@
+ import React from 'react'
+import { Redirect, Route } from 'react-router-dom';
+ 
+ export const PrivatesRoutes = ({isAuth, component: Component, ...rest}) => {
+    // localStorage.setItem('lastPath', rest.location.pathname);
+
+    return (
+        <Route {...rest} component={(props) => (
+            (isAuth)
+            ? <Component {...props} />
+            : <Redirect to="/auth/register" />
+        )}/>
+    )
+}
+ 
